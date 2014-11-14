@@ -9,9 +9,6 @@ mtw.saved = {}
 -- handle legacy systems
 mtw_struct.load_external("legacy")
 
--- chat window
-mtw_struct.load_external("chat/init")
-
 -- customization functions
 mtw_struct.load_external("customizations/init")
 
@@ -38,3 +35,6 @@ mtw_struct.load_external("options")
 
 --triggers
 mtw_struct.load_external("triggers")
+
+--GUI
+mtw_struct.load_external("GUI/init")

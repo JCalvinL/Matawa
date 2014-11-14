@@ -158,7 +158,7 @@ mtw_struct.load()</script>
                 <eventHandlerList/>
             </Script>
             <ScriptGroup isActive="yes" isFolder="yes">
-                <name>GMCP</name>
+                <name>events</name>
                 <packageName></packageName>
                 <script></script>
                 <eventHandlerList/>
@@ -278,12 +278,12 @@ end</script>
                         </eventHandlerList>
                     </Script>
                 </ScriptGroup>
-                <ScriptGroup isActive="yes" isFolder="yes">
+                <ScriptGroup isActive="no" isFolder="yes">
                     <name>chat</name>
                     <packageName></packageName>
                     <script></script>
                     <eventHandlerList/>
-                    <Script isActive="yes" isFolder="no">
+                    <Script isActive="no" isFolder="no">
                         <name>demonnicOnStart_</name>
                         <packageName></packageName>
                         <script>function demonnicOnStart_()
@@ -293,7 +293,7 @@ end</script>
                             <string>sysLoadEvent</string>
                         </eventHandlerList>
                     </Script>
-                    <Script isActive="yes" isFolder="no">
+                    <Script isActive="no" isFolder="no">
                         <name>demonnic_rilist_</name>
                         <packageName></packageName>
                         <script>function demonnic_rilist_()
@@ -303,7 +303,7 @@ end</script>
                             <string>gmcp.Char.Items.List</string>
                         </eventHandlerList>
                     </Script>
-                    <Script isActive="yes" isFolder="no">
+                    <Script isActive="no" isFolder="no">
                         <name>demonnic_riadd_</name>
                         <packageName></packageName>
                         <script>function demonnic_riadd_()
@@ -313,7 +313,7 @@ end</script>
                             <string>gmcp.Char.Items.Add</string>
                         </eventHandlerList>
                     </Script>
-                    <Script isActive="yes" isFolder="no">
+                    <Script isActive="no" isFolder="no">
                         <name>demonnic_rileave_</name>
                         <packageName></packageName>
                         <script>function demonnic_rileave_()
@@ -323,7 +323,7 @@ end</script>
                             <string>gmcp.Char.Items.Remove</string>
                         </eventHandlerList>
                     </Script>
-                    <Script isActive="yes" isFolder="no">
+                    <Script isActive="no" isFolder="no">
                         <name>demonnic_skillGroups_</name>
                         <packageName></packageName>
                         <script>function demonnic_skillGroups_()
@@ -333,7 +333,7 @@ end</script>
                             <string>gmcp.Char.Skills.Groups</string>
                         </eventHandlerList>
                     </Script>
-                    <Script isActive="yes" isFolder="no">
+                    <Script isActive="no" isFolder="no">
                         <name>demonnic_skillsList_</name>
                         <packageName></packageName>
                         <script>function demonnic_skillsList_()
@@ -407,11 +407,39 @@ end</script>
                         <packageName></packageName>
                         <script>function gmcp_players_()
  gmcp_players()
-end
-
-</script>
+end</script>
                         <eventHandlerList>
                             <string>gmcp.Comm.Channel.Players</string>
+                        </eventHandlerList>
+                    </Script>
+                    <Script isActive="yes" isFolder="no">
+                        <name>gmcp_players_in_room_</name>
+                        <packageName></packageName>
+                        <script>function gmcp_players_in_room_()
+ gmcp_players_in_room()
+end</script>
+                        <eventHandlerList>
+                            <string>gmcp.Room.Players</string>
+                        </eventHandlerList>
+                    </Script>
+                    <Script isActive="yes" isFolder="no">
+                        <name>gmcp_add_player_in_room_</name>
+                        <packageName></packageName>
+                        <script>function gmcp_add_player_in_room_()
+ gmcp_add_player_in_room()
+end</script>
+                        <eventHandlerList>
+                            <string>gmcp.Room.AddPlayer</string>
+                        </eventHandlerList>
+                    </Script>
+                    <Script isActive="yes" isFolder="no">
+                        <name>gmcp_rm_player_in_room_</name>
+                        <packageName></packageName>
+                        <script>function gmcp_rm_player_in_room_()
+ gmcp_rm_player_in_room()
+end</script>
+                        <eventHandlerList>
+                            <string>gmcp.Room.RemovePlayer</string>
                         </eventHandlerList>
                     </Script>
                 </ScriptGroup>
@@ -435,28 +463,17 @@ end</script>
                         <string>sysDownloadDone</string>
                     </eventHandlerList>
                 </Script>
-            </ScriptGroup>
-            <Script isActive="yes" isFolder="no">
-                <name>Map Window</name>
-                <packageName></packageName>
-                <script>
-local main = Geyser.Container:new({x=0,y=0,width=&quot;100%&quot;,height=&quot;100%&quot;,name=&quot;mapper container&quot;})
- 
-local mapper = Geyser.Mapper:new({
-  name = &quot;mapper&quot;,
-  x = &quot;64%&quot;, y = &quot;40%&quot;, -- edit here if you want to move it
-  width = &quot;35%&quot;, height = &quot;60%&quot;
-}, main)
-
-function hideMap()
- main:hide()
-end
-
-function showMap()
- main:show()
+                <Script isActive="yes" isFolder="no">
+                    <name>window_resized</name>
+                    <packageName></packageName>
+                    <script>function window_resized()
+ mtw.gui.resize_event()
 end</script>
-                <eventHandlerList/>
-            </Script>
+                    <eventHandlerList>
+                        <string>sysDownloadDone</string>
+                    </eventHandlerList>
+                </Script>
+            </ScriptGroup>
         </ScriptGroup>
     </ScriptPackage>
 </MudletPackage>
