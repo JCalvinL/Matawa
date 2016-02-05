@@ -69,11 +69,26 @@ function gmcp_vitals()
   mtw.aff_remove("health_35")
   mtw.aff_remove("health_55")
   mtw.aff_have("health_75")
+ elseif mtw.vitals.percent.health <= 85 then
+  mtw.aff_remove("health_10")
+  mtw.aff_remove("health_35")
+  mtw.aff_remove("health_55")
+  mtw.aff_remove("health_75")
+  mtw.aff_have("health_85")
+ elseif mtw.vitals.percent.health <= 95 then
+  mtw.aff_remove("health_10")
+  mtw.aff_remove("health_35")
+  mtw.aff_remove("health_55")
+  mtw.aff_remove("health_75")
+  mtw.aff_remove("health_85")
+  mtw.aff_have("health_95")
  else
   mtw.aff_remove("health_10")
   mtw.aff_remove("health_35")
   mtw.aff_remove("health_55")
   mtw.aff_remove("health_75")
+  mtw.aff_remove("health_85")
+  mtw.aff_remove("health_95")
  end
 
  if mtw.my.class == "magician" then
@@ -91,11 +106,26 @@ function gmcp_vitals()
    mtw.aff_remove("magic_35")
    mtw.aff_remove("magic_55")
    mtw.aff_have("magic_75")
+  elseif mtw.vitals.percent.magic <= 85 then
+   mtw.aff_remove("magic_10")
+   mtw.aff_remove("magic_35")
+   mtw.aff_remove("magic_55")
+   mtw.aff_remove("magic_75")
+   mtw.aff_have("magic_85")
+  elseif mtw.vitals.percent.magic <= 95 then
+   mtw.aff_remove("magic_10")
+   mtw.aff_remove("magic_35")
+   mtw.aff_remove("magic_55")
+   mtw.aff_remove("magic_75")
+   mtw.aff_remove("magic_85")
+   mtw.aff_have("magic_95")
   else
    mtw.aff_remove("magic_10")
    mtw.aff_remove("magic_35")
    mtw.aff_remove("magic_55")
    mtw.aff_remove("magic_75")
+   mtw.aff_remove("magic_85")
+   mtw.aff_remove("magic_95")
   end
  end
 

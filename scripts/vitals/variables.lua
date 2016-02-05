@@ -466,6 +466,7 @@ rage = true,
 immunity = true,
 secondwind = true,
 hallowed_verdict = true,
+entropy = true,
 }
 
 mtw.waiting = {
@@ -491,6 +492,7 @@ bash = false,
 secondwind = false,
 hallowed_verdict = false,
 did_stuff = false,
+entropy = false,
 }
 
 --Balance reset timers
@@ -517,6 +519,7 @@ psi = {timer = createStopWatch(), cap = 18},
 secondwind = {timer = createStopWatch(), cap = 35},
 refrain = {timer = createStopWatch(), cap = 200},
 hallowed_verdict = {timer = createStopWatch(), cap = 30},
+entropy = {timer = createStopWatch(), cap = 20},
 }
 
 --Healing command reset tracking

@@ -2830,7 +2830,7 @@ end
 
 function mtw.trigger_448(matches,multimatches)
 if mtw.not_aff("bleeding_2") and mtw.not_aff("bleeding_3") and mtw.not_aff("bleeding_4") and mtw.not_aff("bleeding_5") then
---mtw.aff_have("bleeding_1")
+mtw.aff_have("bleeding_1")
 end
 end
 

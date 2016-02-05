@@ -3,10 +3,14 @@
 -- table of afflictions
 mtw.afflictions = {
 --Low vitals
+aff_health_95 = {state = "healed", cures = {overdrive = "send"}, assess = false, timer = createStopWatch()},
+aff_health_85 = {state = "healed", cures = {overdrive = "send"}, assess = false, timer = createStopWatch()},
 aff_health_75 = {state = "healed", cures = {overdrive = "send"}, assess = false, timer = createStopWatch()},
 aff_health_55 = {state = "healed", cures = {overdrive = "send"}, assess = false, timer = createStopWatch()},
 aff_health_35 = {state = "healed", cures = {overdrive = "send"}, assess = false, timer = createStopWatch()},
 aff_health_10 = {state = "healed", cures = {overdrive = "send"}, assess = false, timer = createStopWatch()},
+aff_magic_95 = {state = "healed", cures = {overdrive = "send"}, assess = false, timer = createStopWatch()},
+aff_magic_85 = {state = "healed", cures = {overdrive = "send"}, assess = false, timer = createStopWatch()},
 aff_magic_75 = {state = "healed", cures = {overdrive = "send"}, assess = false, timer = createStopWatch()},
 aff_magic_55 = {state = "healed", cures = {overdrive = "send"}, assess = false, timer = createStopWatch()},
 aff_magic_35 = {state = "healed", cures = {overdrive = "send"}, assess = false, timer = createStopWatch()},
@@ -203,7 +207,7 @@ aff_retribution = {state = "healed", msg = "under a penance of retribution", cur
 aff_sensitivity = {state = "healed", msg = "sensitive to pain", cures = {focus = "spirit"}, assess = false, effect = "", timer = createStopWatch()},
 aff_somnolence = {state = "healed", msg = "drowsy from somnolence", cures = {focus = "spirit"}, assess = false, effect = "", timer = createStopWatch()},
 aff_sun_allergy = {state = "healed", msg = "allergic to the sun", cures = {focus = "spirit"}, assess = false, effect = "", timer = createStopWatch()},
-aff_sundered_armor = {state = "healed", msg = "wearing sundered armor", cures = {focus = "spirit"}, assess = false, effect = "", timer = createStopWatch()},
+aff_sundered_armor = {state = "healed", msg = "wearing sundered armor", cures = {}, assess = false, effect = "", timer = createStopWatch()},
 aff_tainted_aura = {state = "healed", msg = "sickened with a tainted aura", cures = {focus = "spirit"}, assess = false, effect = "", timer = createStopWatch()},
 aff_unstable = {state = "healed", msg = "in an unstable state", cures = {focus = "spirit"}, assess = false, effect = "", timer = createStopWatch()},
 aff_vindication = {state = "healed", msg = "", cures = {focus = "spirit"}, assess = false, effect = "", timer = createStopWatch()},
@@ -308,6 +312,7 @@ function mtw.aff_cure(affliction)
  elseif mtw.toggles.affecho then
   deleteLine()
   cecho("<blue>\nYou: <green>HEAL<blue> "..affliction.."!")
+  send(" ",false)
  end
  mtw.aff_remove(affliction)
 end

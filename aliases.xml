@@ -389,7 +389,7 @@
                                 <script>mtw.toggle(&quot;igniting&quot;)</script>
                                 <command></command>
                                 <packageName></packageName>
-                                <regex>^tigt$</regex>
+                                <regex>^tig$</regex>
                             </Alias>
                             <Alias isActive="yes" isFolder="no">
                                 <name>anachronizing</name>
@@ -403,7 +403,7 @@
                                 <script>mtw.toggle(&quot;immolating&quot;)</script>
                                 <command></command>
                                 <packageName></packageName>
-                                <regex>^timm$</regex>
+                                <regex>^tim$</regex>
                             </Alias>
                             <Alias isActive="yes" isFolder="no">
                                 <name>mindblasting</name>
@@ -2903,7 +2903,7 @@ send(&quot; &quot;)</script>
                                     <script>mtw.al_soldier(&quot;mhack&quot;)</script>
                                     <command></command>
                                     <packageName></packageName>
-                                    <regex>^mhk$</regex>
+                                    <regex>^mh$</regex>
                                 </Alias>
                                 <Alias isActive="yes" isFolder="no">
                                     <name>rupture</name>
@@ -3455,6 +3455,8 @@ elseif matches[2] == &quot;c&quot; then
  mtw.set_balance(&quot;clanwill&quot;)
 elseif matches[2] == &quot;h&quot; then
  mtw.set_balance(&quot;heatvision on&quot;)
+elseif matches[2] == &quot;b&quot; then
+ mtw.set_balance(&quot;dragonspit &quot;..mtw.target)
  elseif matches[2] == &quot;&quot; then
   mtw.set_balance(&quot;spiritbrand trace&quot;)
 end
@@ -3632,7 +3634,11 @@ end</script>
                                     <regex></regex>
                                     <Alias isActive="yes" isFolder="no">
                                         <name>scry</name>
-                                        <script>mtw.scry_alias(matches)</script>
+                                        <script>if mtw.name ~= Rosalia then
+mtw.scry_alias(matches)
+else
+mtw.send(&quot;scry &quot;..matches[2])
+end</script>
                                         <command></command>
                                         <packageName></packageName>
                                         <regex>^scry (\w+)$</regex>
@@ -3775,7 +3781,7 @@ end</script>
                                         <script>mtw.al_mage(&quot;cast stormlance&quot;)</script>
                                         <command></command>
                                         <packageName></packageName>
-                                        <regex>^sto$</regex>
+                                        <regex>^str$</regex>
                                     </Alias>
                                     <Alias isActive="yes" isFolder="no">
                                         <name>skylash</name>
@@ -3891,10 +3897,13 @@ end</script>
                                     </Alias>
                                     <Alias isActive="yes" isFolder="no">
                                         <name>Magelock</name>
-                                        <script>mtw.al_do_mage(&quot;cast magelock &quot;..matches[2])</script>
+                                        <script>--mtw.al_do_mage(&quot;cast magelock &quot;..matches[2])
+if mtw.my.class == &quot;magician&quot; then
+ mtw.set_balance(&quot;close door &quot;..matches[2]..&quot;;cast magelock &quot;..matches[2])
+end</script>
                                         <command></command>
                                         <packageName></packageName>
-                                        <regex>^mlo (\w+)</regex>
+                                        <regex>^mlk (\w+)</regex>
                                     </Alias>
                                     <Alias isActive="yes" isFolder="no">
                                         <name>incinerate</name>
@@ -4969,11 +4978,58 @@ end</script>
                                     <regex>^rdm$</regex>
                                 </Alias>
                                 <Alias isActive="yes" isFolder="no">
-                                    <name>guardian spirit</name>
-                                    <script>mtw.al_do_priest(&quot;pray for guardian spirit;bqa order guardian follow &quot;..mtw.target)</script>
+                                    <name>Guardian Spirit</name>
+                                    <script>if mtw.my.class == &quot;priest&quot; then
+mtw.set_balance(&quot;pray for guardian spirit&quot;)
+end</script>
                                     <command></command>
                                     <packageName></packageName>
                                     <regex>^grd$</regex>
+                                </Alias>
+                                <Alias isActive="yes" isFolder="no">
+                                    <name>guardian spirit follow target</name>
+                                    <script>--mtw.al_do_priest(&quot;pray for guardian spirit;bqa order guardian follow &quot;..mtw.target)
+if mtw.my.class == &quot;priest&quot; and mtw.not_slow() then
+mtw.set_balance(&quot;pray for guardian spirit&quot;)
+mtw.send(&quot;bqa order guardian follow &quot;..mtw.target)
+else
+mtw.send(&quot;bqa order guardian follow &quot;..mtw.target)
+end
+</script>
+                                    <command></command>
+                                    <packageName></packageName>
+                                    <regex>^grf$</regex>
+                                </Alias>
+                                <Alias isActive="yes" isFolder="no">
+                                    <name>Guardian attack target</name>
+                                    <script>if mtw.my.class == &quot;priest&quot; and mtw.not_slow() then
+mtw.send(&quot;bqa order guardian attack &quot;..mtw.target)
+mtw.send(&quot;bqa order guardian follow &quot;..mtw.target)
+else
+mtw.send(&quot;bqa order guardian attack &quot;..mtw.target)
+end
+</script>
+                                    <command></command>
+                                    <packageName></packageName>
+                                    <regex>^ga$</regex>
+                                </Alias>
+                                <Alias isActive="yes" isFolder="no">
+                                    <name>guardian spirit stop attacking</name>
+                                    <script>if mtw.my.class == &quot;priest&quot; then
+mtw.send(&quot;bqa order guardian passive&quot;)
+end</script>
+                                    <command></command>
+                                    <packageName></packageName>
+                                    <regex>^grs$</regex>
+                                </Alias>
+                                <Alias isActive="yes" isFolder="no">
+                                    <name>Guardian follow me</name>
+                                    <script>if mtw.my.class == &quot;priest&quot; then
+mtw.send(&quot;bqa order guardian follow me&quot;)
+end</script>
+                                    <command></command>
+                                    <packageName></packageName>
+                                    <regex>^gf$</regex>
                                 </Alias>
                                 <Alias isActive="yes" isFolder="no">
                                     <name>reckoning</name>
@@ -5169,7 +5225,7 @@ end</script>
                                     <script>mtw.al_pray(&quot;vengeful mantle&quot;)</script>
                                     <command></command>
                                     <packageName></packageName>
-                                    <regex>^mvng$</regex>
+                                    <regex>^mvn$</regex>
                                 </Alias>
                                 <Alias isActive="yes" isFolder="no">
                                     <name>blessed word  </name>
@@ -5505,7 +5561,7 @@ end</script>
                                     <script>mtw.al_thana(&quot;mass&quot;)</script>
                                     <command></command>
                                     <packageName></packageName>
-                                    <regex>^fms$</regex>
+                                    <regex>^mass$</regex>
                                 </Alias>
                                 <Alias isActive="yes" isFolder="no">
                                     <name>deathwhisper</name>
@@ -5813,14 +5869,14 @@ end</script>
                                     <script>mtw.al_hema(&quot;mantle&quot;)</script>
                                     <command></command>
                                     <packageName></packageName>
-                                    <regex>^mbld$</regex>
+                                    <regex>^mbl$</regex>
                                 </Alias>
                                 <Alias isActive="yes" isFolder="no">
                                     <name>Sanguine Aspect</name>
                                     <script>mtw.al_hema(&quot;aspect&quot;)</script>
                                     <command></command>
                                     <packageName></packageName>
-                                    <regex>^san$</regex>
+                                    <regex>^bsa$</regex>
                                 </Alias>
                                 <Alias isActive="yes" isFolder="no">
                                     <name>Lunar Bay</name>
@@ -5841,7 +5897,7 @@ end</script>
                                     <script>mtw.al_hema(&quot;hunt&quot;)</script>
                                     <command></command>
                                     <packageName></packageName>
-                                    <regex>^hunt$</regex>
+                                    <regex>^bh$</regex>
                                 </Alias>
                                 <Alias isActive="yes" isFolder="no">
                                     <name>Gluttonous Lust</name>
@@ -5862,7 +5918,7 @@ end</script>
                                     <script>mtw.atk_hema(&quot;sanguis &quot;)</script>
                                     <command></command>
                                     <packageName></packageName>
-                                    <regex>^dys$</regex>
+                                    <regex>^san$</regex>
                                 </Alias>
                                 <Alias isActive="yes" isFolder="no">
                                     <name>Feral Rake</name>
@@ -6015,7 +6071,7 @@ end</script>
                                         <script>mtw.revelation_alias(matches)</script>
                                         <command></command>
                                         <packageName></packageName>
-                                        <regex>^wrev(.*)$</regex>
+                                        <regex>^rev(.*)$</regex>
                                     </Alias>
                                     <Alias isActive="yes" isFolder="no">
                                         <name>Virtuous Smite</name>

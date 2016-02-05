@@ -225,7 +225,7 @@ function mtw.do_focus(current)
    end
    if mtw.afflictions[current].cures.focus == "body" and mtw.not_aff("impatience") then
     if string.find(current, "aff_burns_1") then
-     if mtw.status.vampire and not mtw.status.combat then
+     if not mtw.status.combat then
       return
      end
     end
@@ -267,17 +267,17 @@ function mtw.do_overdrive(current)
      mtw.waiting.overdrive = true
      tempTimer(mtw.delay(), [[mtw.waiting.overdrive = false]])
     end
-   elseif mtw.vitals.percent.health <= 75 and (mtw.vitals.adrenaline > 10 or (mtw.vitals.adrenaline > 5 and mtw.toggles.bashing)) and not mtw.have_def("spellshield") and mtw.can_overdrive(false) then
-    mtw.send("overdrive")
+   elseif mtw.vitals.percent.health <= 85 and (mtw.vitals.adrenaline > 10 or (mtw.vitals.adrenaline > 5 and mtw.toggles.bashing)) and mtw.my.class == "magician" and not mtw.have_def("spellshield") and mtw.can_overdrive(true) then
+    mtw.send("overdrive health")
     mtw.waiting.overdrive = true
     tempTimer(mtw.delay(), [[mtw.waiting.overdrive = false]] )
-   elseif mtw.vitals.percent.magic <= 75 and (mtw.vitals.adrenaline > 10 or (mtw.vitals.adrenaline > 5 and mtw.toggles.bashing)) and not mtw.have_def("spellshield") and mtw.can_overdrive(true) then
+   elseif mtw.vitals.percent.magic <= 75 and (mtw.vitals.adrenaline > 10 or (mtw.vitals.adrenaline > 5 and mtw.toggles.bashing)) and mtw.my.class == "magician" and mtw.have_def("spellshield") and mtw.can_overdrive(true) then
     mtw.send("overdrive magic")
     mtw.waiting.overdrive = true
     tempTimer(mtw.delay(), [[mtw.waiting.overdrive = false]] )
    end
   else --not a mage here
-   if mtw.vitals.percent.health <= 75 and (mtw.vitals.adrenaline > 10 or (mtw.vitals.adrenaline > 5 and mtw.toggles.bashing)) and mtw.can_overdrive(false) then
+   if mtw.vitals.percent.health <= 85 and (mtw.vitals.adrenaline > 10 or (mtw.vitals.adrenaline > 5 and mtw.toggles.bashing)) and mtw.can_overdrive(false) then
     mtw.send("overdrive")
     mtw.waiting.overdrive = true
     tempTimer(mtw.delay(), [[mtw.waiting.overdrive = false]] )

@@ -122,7 +122,7 @@ mtw.default.areas = {
 ["temple of Prandur"] = {level = "none", krondor = "extremely far to the north", prime = {"temple"}, targets = {}},
 ["the Temple of Lims-Kragma"] = {level = "none", krondor = "extremely far to the north", prime = {"temple"}, targets = {}},
 ["the Black Cathedral"] = {level = "none", krondor = "distantly to the north", prime = {"temple"}, env = {"garden"}, targets = {}},
-["an Enchanted Glade"] = {level = "100", krondor = "extremely far to the north", targets = {"a porky piglet", "a swarm of tubby bumblebees", "a downy baby bluebird", "a frolicking red%-squirrel", "a tender%-footed doe", "a big%-eyed baby fawn", "a fluffy white sheep"}},
+["an Enchanted Glade"] = {level = "100", krondor = "extremely far to the north", targets = {"a porky piglet", "a swarm of tubby bumblebees", "a downy baby bluebird", "a tender%-footed doe", "a fluffy white sheep", "a frolicking red%-squirrel", "a big%-eyed baby fawn"}},
 }
 
 mtw.default.areas["Fort Dannis"] = {level = "Group", krondor = "extremely far to the northwest", prime = {"mountain", "ruins"}, env = {"hills"}}
@@ -166,3 +166,24 @@ local mt2 = {
  end
 }
 setmetatable(mtw.default.areas["Hush"], mt2)
+
+mtw.default.areas["Sethanon"] = {level = "Group", krondor = "distantly to the northwest", prime = {"ruins"}, env = {"ruins"}}
+local mt3 = {
+ __index = function (t,k)
+  if k == "targets" then
+   local c = gmcp.Char.Status.city:gsub(" %(.*%)", "")
+   if c == "Krondor" then
+    return {"a siege engine and rider of Elvandar", "a sword%-wielding grunt of Elvandar", "a spry battle%-mage of Elvandar", "a siege engine and rider of Sar%-Sargoth", "a sword%-wielding grunt of Sar%-Sargoth", "a spry battle%-mage of Sar%-Sargoth"}
+   elseif c == "Sar-Sargoth" then
+    return {"a siege engine and rider of Elvandar", "a sword%-wielding grunt of Elvandar", "a spry battle%-mage of Elvandar", "a siege engine and rider of Krondor", "a sword%-wielding grunt of Krondor", "a spry battle%-mage of Krondor"}
+   elseif c == "Elvandar" then
+    return {"a siege engine and rider of Krondor", "a sword%-wielding grunt of Krondor", "a spry battle%-mage of Krondor", "a siege engine and rider of Sar%-Sargoth", "a sword%-wielding grunt of Sar%-Sargoth", "a spry battle%-mage of Sar%-Sargoth"}
+   else
+    return  {"a siege engine and rider of Krondor", "a sword%-wielding grunt of Krondor", "a spry battle%-mage of Krondor", "a siege engine and rider of Sar%-Sargoth", "a sword%-wielding grunt of Sar%-Sargoth", "a spry battle%-mage of Sar%-Sargoth", "a siege engine and rider of Elvandar", "a sword%-wielding grunt of Elvandar", "a spry battle%-mage of Elvandar"}
+   end
+  else
+   return nil
+  end
+ end
+}
+setmetatable(mtw.default.areas["Sethanon"], mt3)
