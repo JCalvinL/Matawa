@@ -368,6 +368,7 @@ mtw.tutors = {
 
 --Weapon types list
 mtw.weapons = {
+"runeblade",
 "saber",
 "sabre",
 "longsword",
