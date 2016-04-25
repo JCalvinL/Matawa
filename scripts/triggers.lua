@@ -3987,9 +3987,9 @@ mtw.def_gain("greenburst")
 end
 
 function mtw.trigger_706(matches,multimatches)
-if table.contains(mtw.skills.warcraft,"Quickdraw") and mtw.defenses.def_lightning_stance.state == 'deffed' then
-	mtw.send("quickdraw "..mtw.options.scabbard1)
-end
+--if table.contains(mtw.skills.warcraft,"Quickdraw") and mtw.defenses.def_lightning_stance.state == 'deffed' then
+--	mtw.send("quickdraw "..mtw.options.scabbard1)
+--end
 mtw.def_gain("phoenix_crouching")
 end
 
@@ -7507,15 +7507,15 @@ mtw.anachronized[matches[2]] = nil
 end
 
 function mtw.trigger_1519(matches,multimatches)
-if mtw.my.class == "magician" and string.find(mtw.target, matches[2]) then
+if mtw.my.class == "magician" and table.contains(mtw.skills, "Counterspell")  and string.find(mtw.target, matches[2]) then
  mtw.set_balance("cast counterspell "..mtw.target)
 end
-if string.find(mtw.target, matches[2]) and mtw.my.class == "rogue" and mtw.toggles.flourishing then
- mtw.set_balance("flourish "..matches[2])
-end
-if string.find(mtw.target, matches[2]) and mtw.my.class == "priest" and mtw.toggles.prophesying then
- mtw.set_balance("castigate prophesy "..matches[2])
-end
+ if mtw.my.class == "rogue" and table.contains(mtw.skills, "Flourish") and mtw.toggles.flourishing and mtw.balance.flourish and string.find(mtw.target, matches[2])  then
+  mtw.set_balance("flourish "..attacker)
+ end
+ if mtw.my.class == "priest" and table.contains(mtw.skills, "Prophet's Sight") and mtw.toggles.prophesying and mtw.balance.prophesy and string.find(mtw.target, matches[2])  then
+  mtw.set_balance("castigate prophesy "..attacker)
+ end
 end
 
 function mtw.trigger_1520(matches,multimatches)
@@ -9458,7 +9458,7 @@ end
 cecho("<brown>!")
 end
 
-function mtw.trigger_1920(matches,multimatches)
+function mtw.trigger_1920a(matches,multimatches)
 mtw.attack_miss(matches[3], "phlegm")
 end
 
@@ -10244,11 +10244,11 @@ function mtw.trigger_2029(matches,multimatches)
  cecho("\n<red>********<blue>INCOMING SHADOWSTORM!<red>***********")
  cecho("\n<red>*************************************")
  mtw.atk_start(matches[2], nil, "shadowstorm")
- if string.find(mtw.target, matches[2]) and mtw.my.class == "rogue" and mtw.status.combat and mtw.toggles.flourishing then
-  mtw.set_balance("flourish "..matches[2])
+ if mtw.my.class == "rogue" and table.contains(mtw.skills, "Flourish") and mtw.toggles.flourishing and mtw.balance.flourish then
+  mtw.set_balance("flourish "..attacker)
  end
- if string.find(mtw.target, matches[2]) and mtw.my.class == "priest" and mtw.toggles.prophesying then
-  mtw.set_balance("castigate prophesy "..matches[2])
+ if mtw.my.class == "priest" and table.contains(mtw.skills, "Prophet's Sight") and mtw.toggles.prophesying and mtw.balance.prophesy then
+  mtw.set_balance("castigate prophesy "..attacker)
  end
 end
 
